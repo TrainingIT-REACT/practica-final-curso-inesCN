@@ -1,0 +1,27 @@
+.Inicio {
+  margin: 3em auto;
+  max-width: 50em;
+}
+
+.Inicio h1 {
+  text-align: center;
+}
+
+img {
+  width: 10%;
+  height: auto;
+}
+
+.imgleft {
+  display: inline;
+  float: left;
+}
+
+.textright {
+  display: inline;
+  float: right;
+}
+
+.card {
+  border: 1px solid black;
+}

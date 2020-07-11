@@ -22,7 +22,7 @@ class App extends Component {
         loading: false,
         albums: json
       }));
-    } catch(err) {
+    } catch (err) {
       console.error("Error accediendo al servidor", err);
     }
   }
@@ -42,12 +42,21 @@ class App extends Component {
           El proyecto está preconfigurado con un servidor de desarrollo basado
           en json-server:
         </p>
-          { this.state.loading ?
-            <p>Cargando...</p>
-            : <ul>
-              {this.state.albums.map(album => <li key={album.id}>{album.name}</li>)}
-            </ul>
-          }
+        {this.state.loading ?
+          <p>Cargando...</p>
+          : <ul>
+            {this.state.albums.map(album => <li key={album.id}>{album.name}</li>)
+            }
+              {/* 0:
+                    artist: "Blair"
+                    cover: "/images/cover.jpg"
+                    id: 1
+                    name: "Chip off the old block" 
+              */}
+{/* {console.log("App -> render -> album", this.state.albums) */}
+            {/* }   */}
+                      </ul>
+        }
         <h2>¿Dudas?</h2>
         <p>
           No olvides pasarte por el foro si tienes alguna duda sobre la práctica final
