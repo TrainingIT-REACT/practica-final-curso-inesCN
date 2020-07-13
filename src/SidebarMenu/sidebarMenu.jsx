@@ -1,61 +1,46 @@
 import React, {Component} from 'react'
-import { Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
+import { Menu, Sidebar, Button } from 'semantic-ui-react'
+// import {browserHistory} from "react-router";
+
+
+// import Albums from './Albums';
 
 
 class SidebarMenu extends Component {
   
 state = {}
 
-handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
+
+
+
+handleItemClick = (event) => {
+  console.log("SidebarMenu -> handleItemClick -> event", )
+  event.preventDefault();
+  let path = window.location.origin + "/" +event.target.value;
+  window.location.assign(path);
+}
+
 
   render() {
-    const { activeItem } = this.state
 
     return (
-  <Sidebar.Pushable as={Segment}>
   <Sidebar
     as={Menu}
     icon='labeled'
     inverted
-    vertical
     visible
     width='thin'
   >
-     <Menu>
-        <Menu.Item
-          name='editorials'
-          active={activeItem === 'editorials'}
-          onClick={this.handleItemClick}
-        >
-          Editorials
-        </Menu.Item>
 
-        <Menu.Item
-          name='reviews'
-          active={activeItem === 'reviews'}
-          onClick={this.handleItemClick}
-        >
-          Reviews
-        </Menu.Item>
-
-        <Menu.Item
-          name='upcomingEvents'
-          active={activeItem === 'upcomingEvents'}
-          onClick={this.handleItemClick}
-
-        >
-          Upcoming Events
-        </Menu.Item>
-      </Menu>
+    <Button onClick={this.handleItemClick} value="Inicio">Inicio</Button >
+    <Button onClick={this.handleItemClick} value="Albums">Albums</Button > 
+    <Button onClick={this.handleItemClick} value="Reproductor">Reproductor</Button>
+    <Button onClick={this.handleItemClick} value="Login">Login</Button>
+    <Button onClick={this.handleItemClick} value= "Perfil">Perfil</Button>
+    
   </Sidebar>
 
-  <Sidebar.Pusher>
-    <Segment basic>
-      <Header as='h3'>Application Content</Header>
-      {/* <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' /> */}
-    </Segment>
-  </Sidebar.Pusher>
-</Sidebar.Pushable>
 )
 }
 }

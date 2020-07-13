@@ -2,11 +2,11 @@
 // import { render } from 'enzyme';
 
 // // Componente
-// import App from '../App';
+// import Inicio from '../Inicio';
 
-// describe(App, () => {
+// describe(Inicio, () => {
 //   it('renders correctly', () => {
-//     const wrapper = render(<App />);
+//     const wrapper = render(<Inicio />);
 //     expect(wrapper).toMatchSnapshot();
 //   });
 // })

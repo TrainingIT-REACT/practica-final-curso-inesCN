@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import Inicio from './Inicio';
+// import App from './App';
+import Home from './Home';
 import SidebarMenu from './SidebarMenu/sidebarMenu';
 import * as serviceWorker from './serviceWorker';
 import { Grid } from 'semantic-ui-react';
@@ -10,13 +10,12 @@ import { Grid } from 'semantic-ui-react';
 ReactDOM.render(
   <main>
     <Grid>
-
       <Grid.Row>
-        <Grid.Column width={5} className="floatleft">
+         <Grid.Column width={5} className="floatleft">
           <SidebarMenu />
         </Grid.Column>
         <Grid.Column width={12} className="floatrigth">
-          <Inicio />
+          <Home  />
         </Grid.Column>
       </Grid.Row>
 
