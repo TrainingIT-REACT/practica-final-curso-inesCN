@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { List, Image } from 'semantic-ui-react'
+// import { List, Image } from 'semantic-ui-react'
 
 // Css
 import './Home.css';

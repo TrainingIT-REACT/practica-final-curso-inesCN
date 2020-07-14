@@ -31,7 +31,7 @@ class Albums extends Component {
   render() {
     return (
       <div className="Albums">
-        <h1>Albums!!!</h1>
+        <h1>Albums</h1>
         <List>
           {
             this.state.loading ?
