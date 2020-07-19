@@ -4,13 +4,17 @@ import { Grid, List, Image } from 'semantic-ui-react'
 // Css
 import './Albums.css';
 
+//Componentes
+import Album from "./../Album/Album"
+
 class Albums extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       loading: true,
-      albums: []
+      albums: [],
+      albumState: []
     }
   }
 
@@ -27,6 +31,13 @@ class Albums extends Component {
       console.error("Error accediendo al servidor", err);
     }
   }
+  handleClick (album) {
+  console.log(album)
+
+   return <Album album={album}/>
+  }
+
+  
 
   render() {
     return (
@@ -37,10 +48,10 @@ class Albums extends Component {
             this.state.loading ?
               <p>Cargando...</p>
               : this.state.albums.map(album =>
-
-                <List.Item className="listado">
+               
+                <List.Item className="listado"  onClick={(e) => this.handleClick(album)} >
                   <Image avatar src={album.cover} alt={album.name} />
-                  <List.Content className="card">
+                  <List.Content className="card"  >
                     <List.Header key={album.id}><b>Album:</b> {album.name}</List.Header>
                     <List.Description><b>Artista:</b> {album.artist}</List.Description>
                   </List.Content>
@@ -49,22 +60,6 @@ class Albums extends Component {
               )
           }
         </List>
-
-        {/* {
-          this.state.loading ?
-            <p>Cargando...</p>
-            : this.state.albums.map(album =>
-              <Grid.Row className="listado">
-                <img src={album.cover} alt={album.name} />
-                <ul className="card">
-                  <li key={album.id}><b>Album:</b> {album.name}</li>
-                  <ul>
-                    <li><b>Artista:</b> {album.artist}</li>
-                  </ul>
-                </ul>
-              </Grid.Row>
-            )
-        } */}
       </div>
     );
 

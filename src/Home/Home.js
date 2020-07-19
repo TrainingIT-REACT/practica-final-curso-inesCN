@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { List, Image } from 'semantic-ui-react'
+import { List, Image } from 'semantic-ui-react'
 
 // Css
 import './Home.css';
@@ -10,18 +10,18 @@ class Home extends Component {
 
     this.state = {
       loading: true,
-      albums: []
+      songs: []
     }
   }
 
   async componentDidMount() {
     try {
-      const res = await fetch('/albums');
+      const res = await fetch('/songs');
       const json = await res.json();
       this.setState((prevState) => ({
         ...prevState,
         loading: false,
-        albums: json
+        songs: json
       }));
     } catch (err) {
       console.error("Error accediendo al servidor", err);
@@ -31,44 +31,28 @@ class Home extends Component {
   render() {
     return (
       <div className="Home">
-        {/* <List>
+        <h1>Música recomendada</h1>
+        <List>
           {
             this.state.loading ?
               <p>Cargando...</p>
-              : this.state.albums.map(album =>
-
+              : this.state.songs.slice(0, 5).map(song =>
                 <List.Item className="listado">
-                  <Image avatar src={album.cover} alt={album.name} />
                   <List.Content className="card">
-                    <List.Header key={album.id}><b>Album:</b> {album.name}</List.Header>
-                    <List.Description><b>Artista:</b> {album.artist}</List.Description>
+                    <List.Header key={song.id}><b>song:</b> {song.name}</List.Header>
+                    <List.Description><b>Duración:</b> {song.seconds}</List.Description>
+                  <audio id="myAudio" controls>
+                    <source src={song.audio} type="audio/mp3"></source>
+                    Your browser does not support the audio element.
+                  </audio>
                   </List.Content>
                 </List.Item>
-
               )
           }
-        </List> */}
-
-        {/* {
-          this.state.loading ?
-            <p>Cargando...</p>
-            : this.state.albums.map(album =>
-              <Grid.Row className="listado">
-                <img src={album.cover} alt={album.name} />
-                <ul className="card">
-                  <li key={album.id}><b>Album:</b> {album.name}</li>
-                  <ul>
-                    <li><b>Artista:</b> {album.artist}</li>
-                  </ul>
-                </ul>
-              </Grid.Row>
-            )
-        } */}
+        </List>
       </div>
     );
-
   }
-
 }
 
 export default Home;

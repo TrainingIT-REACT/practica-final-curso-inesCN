@@ -13,3 +13,31 @@ body {
 .floatleft {
   float: left;
 }
+
+.button {
+  background-color: #fabada;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 0px;
+}
+
+
+.button:hover {
+  background-color: #d63485;
+}
+
+.button:active {
+  background-color: #d63485;
+}
+
+.col-menu{
+  margin-top: 100%;
+  width: 200%;
+  height: auto;
+}

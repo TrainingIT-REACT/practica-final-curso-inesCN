@@ -31,40 +31,7 @@ class Perfil extends Component {
   render() {
     return (
       <div className="Perfil">
-        
-        <List>
-          {
-            this.state.loading ?
-              <p>Cargando...</p>
-              : this.state.albums.map(album =>
-
-                <List.Item className="listado">
-                  <Image avatar src={album.cover} alt={album.name} />
-                  <List.Content className="card">
-                    <List.Header key={album.id}><b>Album:</b> {album.name}</List.Header>
-                    <List.Description><b>Artista:</b> {album.artist}</List.Description>
-                  </List.Content>
-                </List.Item>
-
-              )
-          }
-        </List>
-
-        {/* {
-          this.state.loading ?
-            <p>Cargando...</p>
-            : this.state.albums.map(album =>
-              <Grid.Row className="listado">
-                <img src={album.cover} alt={album.name} />
-                <ul className="card">
-                  <li key={album.id}><b>Album:</b> {album.name}</li>
-                  <ul>
-                    <li><b>Artista:</b> {album.artist}</li>
-                  </ul>
-                </ul>
-              </Grid.Row>
-            )
-        } */}
+        <h1>Perfil</h1>
       </div>
     );
 
