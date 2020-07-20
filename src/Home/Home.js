@@ -37,9 +37,9 @@ class Home extends Component {
             this.state.loading ?
               <p>Cargando...</p>
               : this.state.songs.slice(0, 5).map(song =>
-                <List.Item className="listado">
+                <List.Item className="listado" id={song.id}>
                   <List.Content className="card">
-                    <List.Header key={song.id}><b>song:</b> {song.name}</List.Header>
+                    <List.Header key={song.id}><b>Nombre:</b> {song.name}</List.Header>
                     <List.Description><b>Duración:</b> {song.seconds}</List.Description>
                   <audio id="myAudio" controls>
                     <source src={song.audio} type="audio/mp3"></source>

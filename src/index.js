@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from "react-redux";
 import './index.css';
 import { Grid } from 'semantic-ui-react';
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom"
@@ -17,6 +18,10 @@ import Perfil from "./Perfil/Perfil"
 
 // Componente para definir rutas privadas
 import PrivateRoute from './PrivateRoute';
+
+// Store
+import store from './store';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -37,7 +42,7 @@ class App extends React.Component {
   render() {
     return (
 
-      <main> 
+      <Provider store={store}> 
         <Router>
           <Grid>
             <UserContext.Provider value={this.state}>
@@ -71,7 +76,7 @@ class App extends React.Component {
           </Grid>
         </Router>
 
-      </main>
+      </Provider>
     )
   };
 }

@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { Grid, List, Image } from 'semantic-ui-react'
+import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
+
+// Action creators
+// import { completeTodo } from './../redux/actions/todosAction';
+import { getPosts } from './../redux/actions/albumsAction';
 
 // Css
 import './Albums.css';
-
-//Componentes
-import Album from "./../Album/Album"
 
 class Albums extends Component {
   constructor(props) {
@@ -19,42 +22,41 @@ class Albums extends Component {
   }
 
   async componentDidMount() {
-    try {
-      const res = await fetch('/albums');
-      const json = await res.json();
-      this.setState((prevState) => ({
-        ...prevState,
-        loading: false,
-        albums: json
-      }));
-    } catch (err) {
-      console.error("Error accediendo al servidor", err);
-    }
+    this.props.getPosts();
   }
-  handleClick (album) {
-  console.log(album)
-
-   return <Album album={album}/>
+  handleClick(e) {
+    e.stopPropagation();
   }
 
-  
+
 
   render() {
+    const { isLoading, error, posts } = this.props;
+    console.log("Albums -> render -> posts", posts)
+    console.log("Albums -> render -> error", error)
+    console.log("Albums -> render -> isLoading", isLoading)
+
     return (
       <div className="Albums">
         <h1>Albums</h1>
         <List>
           {
-            this.state.loading ?
+            isLoading ?
               <p>Cargando...</p>
               : this.state.albums.map(album =>
-               
-                <List.Item className="listado"  onClick={(e) => this.handleClick(album)} >
-                  <Image avatar src={album.cover} alt={album.name} />
-                  <List.Content className="card"  >
-                    <List.Header key={album.id}><b>Album:</b> {album.name}</List.Header>
-                    <List.Description><b>Artista:</b> {album.artist}</List.Description>
-                  </List.Content>
+
+                <List.Item className="listado" onClick={this.handleClick} >
+
+                  <Link to='/album' params={album} target="_parent">
+
+                    <Image avatar src={album.cover} alt={album.name} />
+                    <List.Content className="card"  >
+                      <List.Header key={album.id}><b>Album:</b> {album.name}</List.Header>
+                      <List.Description><b>Artista:</b> {album.artist}</List.Description>
+                    </List.Content>
+
+                  </Link>
+
                 </List.Item>
 
               )
@@ -67,4 +69,17 @@ class Albums extends Component {
 
 }
 
-export default Albums;
+const mapStateToProps = (state) => {
+  return {
+    ...state
+  }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  getPosts: () => dispatch(getPosts())
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Albums);
