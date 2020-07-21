@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, List, Image } from 'semantic-ui-react'
+import {  List, Image } from 'semantic-ui-react'
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 
@@ -45,7 +45,7 @@ class Albums extends Component {
               <p>Cargando...</p>
               : this.state.albums.map(album =>
 
-                <List.Item className="listado" onClick={this.handleClick} >
+                <List.Item key={album.id} className="listado" onClick={this.handleClick} >
 
                   <Link to='/album' params={album} target="_parent">
 

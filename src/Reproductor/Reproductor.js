@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, List, Image } from 'semantic-ui-react'
+// import { Grid, List, Image } from 'semantic-ui-react'
 
 // Css
 import './Reproductor.css';

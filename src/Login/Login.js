@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 // Css
 import './Login.css';
@@ -9,16 +9,16 @@ const Login = ({ location }) => {
     {({ signedIn, updateUser }) => {
       return <div>
         { signedIn ? (
-          <p>Ya puedes ir al panel de administración! 👆</p>
+          <p>Ya puedes tu perfil</p>
         ) : (
-          <>
+          <span>
             <button onClick={() => updateUser(true)}>Login</button>
             { (location.state && location.state.message) &&
               <p>
                 { location.state.message }
               </p>
             }
-          </>
+          </span>
         )}
       </div>
     }}

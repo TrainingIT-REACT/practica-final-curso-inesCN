@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, List, Image } from 'semantic-ui-react'
+import { List, Image } from 'semantic-ui-react'
 
 // Css
 import './Album.css';
@@ -48,22 +48,6 @@ class Album extends Component {
               )
           }
         </List>
-
-        {/* {
-          this.state.loading ?
-            <p>Cargando...</p>
-            : this.state.albums.map(album =>
-              <Grid.Row className="listado">
-                <img src={album.cover} alt={album.name} />
-                <ul className="card">
-                  <li key={album.id}><b>Album:</b> {album.name}</li>
-                  <ul>
-                    <li><b>Artista:</b> {album.artist}</li>
-                  </ul>
-                </ul>
-              </Grid.Row>
-            )
-        } */}
       </div>
     );
 
