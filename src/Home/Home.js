@@ -37,7 +37,7 @@ class Home extends Component {
             this.state.loading ?
               <p>Cargando...</p>
               : this.state.songs.slice(0, 5).map(song =>
-                <List.Item className="listado" id={song.id}>
+                <List.Item className="listado" key={song.id}>
                   <List.Content className="card">
                     <List.Header key={song.id}><b>Nombre:</b> {song.name}</List.Header>
                     <List.Description><b>Duración:</b> {song.seconds}</List.Description>

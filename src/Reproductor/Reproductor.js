@@ -5,13 +5,7 @@ import React, { Component } from 'react';
 import './Reproductor.css';
 
 class Reproductor extends Component {
-  constructor(props) {
-    super(props);
-
-  }
-
-
-
+ 
   render() {
     return (
       <div className="Reproductor">

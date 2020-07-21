@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { List, Image } from 'semantic-ui-react'
 
 // Css
-import './Album.css';
+import './Albums.css';
 
 class Album extends Component {
   constructor(props) {

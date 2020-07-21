@@ -11,7 +11,7 @@ import UserContext from "./contexts/user"
 //Componentes
 import Home from "./Home/Home"
 import Albums from "./Albums/Albums"
-import Album from "./Album/Album"
+import Album from "./Albums/Album"
 import Reproductor from "./Reproductor/Reproductor"
 import Login from "./Login/Login"
 import Perfil from "./Perfil/Perfil"
