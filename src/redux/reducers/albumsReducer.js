@@ -1,9 +1,9 @@
-import { getPosts } from '../actions/albumsAction';
+import { getAlbums } from '../actions/albumsAction';
 
 // Estado inicial
 const initialState = {
   isLoading: false,
-  posts: [],
+  albums: [],
   error: false
 }
 
@@ -11,7 +11,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   console.log("reducer -> action", action.payload)
   switch (action.type) {
-    case String(getPosts.pending):
+    case String(getAlbums.pending):
       // Activamos la flag de isLoading.
       // Eliminamos cualquier error anterior
       return {
@@ -19,16 +19,16 @@ const reducer = (state = initialState, action) => {
         isLoading: true,
         error: false
       };
-    case String(getPosts.fulfilled):
+    case String(getAlbums.fulfilled):
       // Almacenamos los articulos y reiniciamos
       // las flags
       return {
         ...state,
         isLoading: false,
-        posts: action.payload,
+        albums: action.payload,
         error: false
       }
-    case String(getPosts.rejected):
+    case String(getAlbums.rejected):
       // Desactivamos la flag de carga y
       // activamos la de error
       return {

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 // Action creators
 // import { completeTodo } from './../redux/actions/todosAction';
-import { getPosts } from './../redux/actions/albumsAction';
+import { getAlbums } from './../redux/actions/albumsAction';
 
 // Css
 import './Albums.css';
@@ -22,7 +22,7 @@ class Albums extends Component {
   }
 
   async componentDidMount() {
-    this.props.getPosts();
+    this.props.getAlbums();
   }
   handleClick(e) {
     e.stopPropagation();
@@ -31,10 +31,7 @@ class Albums extends Component {
 
 
   render() {
-    const { isLoading, error, posts } = this.props;
-    console.log("Albums -> render -> posts", posts)
-    console.log("Albums -> render -> error", error)
-    console.log("Albums -> render -> isLoading", isLoading)
+    const { isLoading, error, albums } = this.props;
 
     return (
       <div className="Albums">
@@ -43,7 +40,7 @@ class Albums extends Component {
           {
             isLoading ?
               <p>Cargando...</p>
-              : this.state.albums.map(album =>
+              : albums.map(album =>
 
                 <List.Item key={album.id} className="listado" onClick={this.handleClick} >
 
@@ -71,12 +68,12 @@ class Albums extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    ...state
+    ...state.albums
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  getPosts: () => dispatch(getPosts())
+  getAlbums: () => dispatch(getAlbums())
 })
 
 export default connect(
