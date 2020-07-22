@@ -3,12 +3,12 @@
     max-width: 50em;
   }
   
-  .Albums h1 {
+  .Albums h1, .card h2 {
     text-align: center;
   }
   
-  img {
-    width: 10%;
+  .listado img {
+    width: 10%!important;
     height: auto;
     margin-right: 5%;
   }
@@ -17,8 +17,11 @@
     
   }
    
-  .listado img {
-    float: left;
+  .listadoAlbum img {
+    float: right!important;
+    width: 27%!important;
+    height: auto;
+    margin-right: 5%;
   }
   
   .card {
@@ -30,4 +33,15 @@
     padding-bottom: 3.3%;
   }
 
-  
+  .nopadding{
+    padding: 0px;
+  }
+
+  .card-songs {
+    /* border: 2px groove #fabada; */
+    vertical-align: -25px;
+    padding: 1%;
+    margin-left: 12%;
+    margin-right: 40%;
+    padding-bottom: 3.3%;
+  }

@@ -14,6 +14,7 @@ import Albums from "./Albums/Albums"
 import Album from "./Albums/Album"
 import Reproductor from "./Reproductor/Reproductor"
 import Login from "./Login/Login"
+import LoginForm from "./Login/LoginForm"
 import Perfil from "./Perfil/Perfil"
 
 // Componente para definir rutas privadas
@@ -54,7 +55,7 @@ class App extends React.Component {
                       <NavLink activeClassName="active" className="button" exact to="/">Home</NavLink>
                       <NavLink activeClassName="active" className="button" exact to="/albums">Albums</NavLink>
                       <NavLink activeClassName="active" className="button" exact to="/reproductor">Reproductor</NavLink>
-                      <NavLink activeClassName="active" className="button" exact to="/Login">Login</NavLink>
+                      <NavLink activeClassName="active" className="button" exact to="/LoginForm">Login</NavLink>
                       <NavLink activeClassName="active" className="button" exact to="/perfil">Perfil</NavLink>
                     </nav>
                   </Grid.Column>
@@ -63,13 +64,12 @@ class App extends React.Component {
                   <nav>
                   <Route path="/" exact component={Home}/>
                     <Route path="/albums" exact component={Albums}/>
-                    <Route path="/album" exact component={Album}/>
+                    <Route path="/album/:idAlbum" exact component={Album}/>
                     <Route path="/reproductor" exact component={Reproductor}/>
                     <Route path="/Login" exact component={Login}/>
+                    <Route path="/LoginForm" exact component={LoginForm}/>
                     <PrivateRoute path="/perfil" exact component={Perfil}/>
                   </nav>
-                  {/* <Home /> */}
-                  {/* <Albums/> */}
                 </Grid.Column>
               </Grid.Row>
             </UserContext.Provider>

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 
 // Action creators
-// import { completeTodo } from './../redux/actions/todosAction';
 import { getAlbums } from './../redux/actions/albumsAction';
 
 // Css
@@ -14,12 +13,12 @@ class Albums extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      loading: true,
-      albums: [],
-      albumState: []
-    }
+    // this.state = {
+    //   albums: [],
+    //   albumState: []
+    // }
   }
+  
 
   async componentDidMount() {
     this.props.getAlbums();
@@ -31,7 +30,7 @@ class Albums extends Component {
 
 
   render() {
-    const { isLoading, error, albums } = this.props;
+    const { isLoading, albums } = this.props;
 
     return (
       <div className="Albums">
@@ -44,7 +43,7 @@ class Albums extends Component {
 
                 <List.Item key={album.id} className="listado" onClick={this.handleClick} >
 
-                  <Link to='/album' params={album} target="_parent">
+                  <Link to={`/album/${album.id}`} target="_parent">
 
                     <Image avatar src={album.cover} alt={album.name} />
                     <List.Content className="card"  >
@@ -68,7 +67,8 @@ class Albums extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    ...state.albums
+    isLoading: state.albums.isLoading,
+    albums: state.albums.albums
   }
 }
 

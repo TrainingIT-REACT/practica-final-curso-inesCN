@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { List } from 'semantic-ui-react'
+import { connect } from 'react-redux';
+
+// Action creators
+import { getSongs } from './../redux/actions/songsAction';
 
 // Css
 import './Home.css';
@@ -15,34 +19,25 @@ class Home extends Component {
   }
 
   async componentDidMount() {
-    try {
-      const res = await fetch('/songs');
-      const json = await res.json();
-      this.setState((prevState) => ({
-        ...prevState,
-        loading: false,
-        songs: json
-      }));
-    } catch (err) {
-      console.error("Error accediendo al servidor", err);
-    }
+    this.props.getSongs();
   }
 
   render() {
+    const { isLoading, error, songs } = this.props;
     return (
       <div className="Home">
         <h1>Música recomendada</h1>
         <List>
           {
-            this.state.loading ?
+            isLoading ?
               <p>Cargando...</p>
-              : this.state.songs.slice(0, 5).map(song =>
+              : songs.slice(0, 5).map(song =>
                 <List.Item className="listado" key={song.id}>
                   <List.Content className="card">
                     <List.Header key={song.id}><b>Nombre:</b> {song.name}</List.Header>
                     <List.Description><b>Duración:</b> {song.seconds}</List.Description>
-                  <audio id="myAudio" controls>
-                    <source src={song.audio} type="audio/mp3"></source>
+                    <audio id="myAudio" controls>
+                      <source src={song.audio} type="audio/mp3"></source>
                     Your browser does not support the audio element.
                   </audio>
                   </List.Content>
@@ -55,4 +50,19 @@ class Home extends Component {
   }
 }
 
-export default Home;
+
+const mapStateToProps = (state) => {
+  return {
+    isLoading: state.songs.isLoading,
+    songs: state.songs.songs
+  }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  getSongs: () => dispatch(getSongs())
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);
