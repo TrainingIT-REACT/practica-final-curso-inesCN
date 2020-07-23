@@ -14,11 +14,6 @@ import './Login.css';
 class LoginForm extends Component {
     constructor(props) {
         super(props);
-        // this.state = {
-        //     nombre: document.getElementById("nombre").value,
-        //     apellidos: document.getElementById("apellidos").value,
-        //     email: document.getElementById("email").value
-        // };
     }
     handleChangeNombre(e) {
         localStorage.setItem('nombre', e.target.value);

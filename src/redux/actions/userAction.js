@@ -13,11 +13,6 @@ actions.forEach(action => {
   actionTypes[action] = action;
 });
 
-// export const addUser = createAsyncAction('ADD_USER', async () => {
-//     const res = await fetch('http://localhost:3001/albums')
-//     return res.json();
-//   });
-
 export const updateName = (name) => ({
   type: actionTypes.UPDATE_NAME,
   name
