@@ -19,7 +19,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --open --mode=production",
+    "start": "webpack-dev-server --open --mode=production proxy",
     "build": "webpack --mode=production",
     "serve": "yarn build && serve -s build"
   },
