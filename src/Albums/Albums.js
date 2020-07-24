@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {  List, Image } from 'semantic-ui-react'
+import { List, Image } from 'semantic-ui-react'
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 
@@ -12,13 +12,8 @@ import './Albums.css';
 class Albums extends Component {
   constructor(props) {
     super(props);
-
-    // this.state = {
-    //   albums: [],
-    //   albumState: []
-    // }
   }
-  
+
 
   async componentDidMount() {
     this.props.getAlbums();
@@ -35,7 +30,7 @@ class Albums extends Component {
     return (
       <div className="Albums">
         <h1>Albums</h1>
-        <List>
+        <List className="listaAlbums">
           {
             isLoading ?
               <p>Cargando...</p>

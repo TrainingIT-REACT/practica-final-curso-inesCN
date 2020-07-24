@@ -1,20 +1,48 @@
 import React, { Component } from 'react';
-// import { Grid, List, Image } from 'semantic-ui-react'
+import { connect } from 'react-redux';
+
+// Action creators
+import { getSongs } from './../redux/actions/songsAction';
 
 // Css
 import './Reproductor.css';
 
 class Reproductor extends Component {
- 
-  render() {
-    return (
-      <div className="Reproductor">
-        <h1>Reproductor</h1>
-      </div>
-    );
-
+  
+  async componentDidMount() {
+    this.props.getSongs();
   }
 
+  render() {
+    const { isLoading, error, songs } = this.props;
+    return (
+      songs.slice(0, 1).map(song => {
+
+            return <div className="reproductor" key={song.id}>
+              <audio controls>
+                <source src={song.audio} type="audio/mp3" />
+              </audio>
+            </div>
+
+
+          })
+    )
+  }
+};
+
+
+const mapStateToProps = (state) => {
+  return {
+    isLoading: state.songs.isLoading,
+    songs: state.songs.songs
+  }
 }
 
-export default Reproductor;
+const mapDispatchToProps = (dispatch) => ({
+  getSongs: () => dispatch(getSongs())
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Reproductor);

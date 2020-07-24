@@ -44,7 +44,7 @@ class App extends React.Component {
   render() {
     return (
 
-      <Provider store={store}> 
+      <Provider store={store}>
         <Router>
           <Grid>
             <UserContext.Provider value={this.state}>
@@ -55,7 +55,6 @@ class App extends React.Component {
                     <nav>
                       <NavLink activeClassName="active" className="button" exact to="/">Home</NavLink>
                       <NavLink activeClassName="active" className="button" exact to="/albums">Albums</NavLink>
-                      <NavLink activeClassName="active" className="button" exact to="/reproductor">Reproductor</NavLink>
                       <NavLink activeClassName="active" className="button" exact to="/LoginForm">Login</NavLink>
                       <NavLink activeClassName="active" className="button" exact to="/perfil">Perfil</NavLink>
                     </nav>
@@ -63,21 +62,23 @@ class App extends React.Component {
                 </Grid.Column>
                 <Grid.Column width={11} className="floatrigth">
                   <nav>
-                  <Route path="/" exact component={Home}/>
-                    <Route path="/albums" exact component={Albums}/>
-                    <Route path="/album/:idAlbum" exact component={Album}/>
-                    <Route path="/reproductor" exact component={Reproductor}/>
-                    <Route path="/Login" exact component={Login}/>
-                    <Route path="/LoginForm" exact component={LoginForm}/>
-                    <PrivateRoute path="/perfil" exact component={Perfil}/>
+                    <Route path="/" exact component={Home} />
+                    <Route path="/albums" exact component={Albums} />
+                    <Route path="/album/:idAlbum" exact component={Album} />
+                    <Route path="/Login" exact component={Login} />
+                    <Route path="/LoginForm" exact component={LoginForm} />
+                    <PrivateRoute path="/perfil" exact component={Perfil} />
                   </nav>
                 </Grid.Column>
               </Grid.Row>
             </UserContext.Provider>
           </Grid>
         </Router>
-
+        <footer>
+          <Reproductor />
+        </footer>
       </Provider>
+
     )
   };
 }

@@ -30,8 +30,12 @@ module.exports = {
   devServer: {
     contentBase: './build',
     historyApiFallback: true,
-    proxy:{
-        '/api': 'http://localhost:3001'
+    proxy: {
+      '/api': 'http://localhost:3001',
+      '/albums': 'http://localhost:3001',
+      '/songs': 'http://localhost:3001',
+      '/images': 'http://localhost:3001',
+      '/music': 'http://localhost:3001'
     }
   }
 }

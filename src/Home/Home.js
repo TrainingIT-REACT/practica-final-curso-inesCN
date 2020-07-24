@@ -11,11 +11,6 @@ import './Home.css';
 class Home extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      loading: true,
-      songs: []
-    }
   }
 
   async componentDidMount() {
@@ -27,7 +22,7 @@ class Home extends Component {
     return (
       <div className="Home">
         <h1>Música recomendada</h1>
-        <List>
+        <List className="listaHome">
           {
             isLoading ?
               <p>Cargando...</p>
