@@ -1,4 +1,4 @@
-/* eslint-disable no-undef, no-restricted-globals */
+﻿/* eslint-disable no-undef, no-restricted-globals */
 
 const cacheName = "app-files-v1";
 
@@ -6,43 +6,21 @@ const filesToCache = [
   '/',
   '/main.js'
 ];
-
+﻿/* eslint-disable no-undef, no-restricted-globals */
+import {precacheAndRoute} from 'workbox-precaching';
 // Esperamos al evento "install" para confirmar que el service-worker se ha
 // instalado.
-self.addEventListener('install', (event) => {
-  console.log("El service worker ha sido instalado!");
-  // Forzamos al evento install a esperar la instalación de la cache antes
-  // de marcar el service worker como instalado
-  event.waitUntil(
-    // Abrimos la caché
-    caches.open(cacheName)
-      .then(cache => {
-        console.log("Cache abierta");
-        // Forzamos la caché de los distintos ficheros
-        return cache.addAll(filesToCache);
-      })
-  )
+self.addEventListener(​'install'​, (event) => {​
+  console​.log(​"El service worker ha sido instalado!"​);
+  ​// Ya no necesitamos gestionar la caché
 });
-
-// Interceptamos las peticiones
-self.addEventListener('fetch', function(event) {
-  // Respondemos al a petición
-  event.respondWith(
-    // Comprobamos si existe este elemento en la caché
-    caches.match(event.request)
-      .then(function(response) {
-        // Si existe la petición en la cache, la devolvemos
-        if (response) {
-          return response;
-        }
-        // Si no, retornamos la petición fetch
-        return fetch(event.request);
-      }
-    )
-  );
-});
-
+// No necesitamos Interceptar las peticiones. En su lugar,
+// llamamos al método de workbox
+precacheAndRoute(self.__WB_MANIFEST);
 // Evento activate
-self.addEventListener('activate', function(e) {
-  console.log('activado!');
+self.addEventListener(​'activate'​, (e) => {
+  ​console​.log(​'activado'​);
+  ​// Informa al navegador que va a tomar el control​
+  // del sitio web
+  ​return​ self.clients.claim();
 });
