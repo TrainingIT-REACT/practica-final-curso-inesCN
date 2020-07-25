@@ -1,12 +1,4 @@
-﻿/* eslint-disable no-undef, no-restricted-globals */
-
-const cacheName = "app-files-v1";
-
-const filesToCache = [
-  '/',
-  '/main.js'
-];
-﻿/* eslint-disable no-undef, no-restricted-globals */
+﻿﻿/* eslint-disable no-undef, no-restricted-globals */
 import {precacheAndRoute} from 'workbox-precaching';
 // Esperamos al evento "install" para confirmar que el service-worker se ha
 // instalado.

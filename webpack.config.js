@@ -1,7 +1,7 @@
 // Librerías
 const path = require('path');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-// const CopyPlugin = require('copy-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
@@ -30,14 +30,14 @@ module.exports = {
       template: "./public/index.html",
       filename: "./index.html"
     }),
-    // new CopyPlugin({
-    //   patterns: [
-    //     { from: 'public', to: '' },
-    //   ],
-    //   options: {
-    //     concurrency: 100,
-    //   },
-    // }),
+    new CopyPlugin({
+      patterns: [
+        { from: 'public', to: '' },
+      ],
+      options: {
+        concurrency: 100,
+      },
+    }),
     new WorkboxPlugin.InjectManifest({
       swSrc: './src/sw.js'
     })

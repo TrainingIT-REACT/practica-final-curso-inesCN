@@ -1,12 +1,12 @@
-// import React from 'react';
-// import { render } from 'enzyme';
+import React from 'react';
+import { render } from 'enzyme';
 
-// // Componente
-// import Inicio from '../Inicio';
+// Componente
+import Home from '../Home';
 
-// describe(Inicio, () => {
-//   it('renders correctly', () => {
-//     const wrapper = render(<Inicio />);
-//     expect(wrapper).toMatchSnapshot();
-//   });
-// })
+describe(Home, () => {
+  it('renders correctly', () => {
+    const wrapper = render(<Home />);
+    expect(wrapper).toMatchSnapshot();
+  });
+})

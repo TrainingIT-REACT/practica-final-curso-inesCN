@@ -1,3 +1,5 @@
+const Home = require("../Home")
+
 beforeAll(() => { console.log("beforeAll")});
 beforeEach(() => { console.log("beforeEach")});
 afterEach(() => { console.log("afterEach")});
