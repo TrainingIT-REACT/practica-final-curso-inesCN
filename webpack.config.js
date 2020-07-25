@@ -1,6 +1,8 @@
 // Librerías
 const path = require('path');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+// const CopyPlugin = require('copy-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -8,6 +10,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'build'),
     publicPath: "/",
+    filename: '[name].[chunkhash:8].js'
   },
   module: {
     rules: [
@@ -26,6 +29,17 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./public/index.html",
       filename: "./index.html"
+    }),
+    // new CopyPlugin({
+    //   patterns: [
+    //     { from: 'public', to: '' },
+    //   ],
+    //   options: {
+    //     concurrency: 100,
+    //   },
+    // }),
+    new WorkboxPlugin.InjectManifest({
+      swSrc: './src/sw.js'
     })
   ],
   devServer: {
